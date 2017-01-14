@@ -1,0 +1,18 @@
+<div data-ng-controller="ComparisonController">
+    Enter start lat:
+    <input type="text" data-ng-model="start_lat" />
+    Enter start long:
+    <input type="text" data-ng-model="start_long" />
+    <br>
+    Enter end lat:
+    <input type="text" data-ng-model="end_lat" />
+    Enter end long:
+    <input type="text" data-ng-model="end_long" />
+    <br>
+    <button data-ng-click="getRideEstimates()">Get ride estimates</button>
+    <div data-ng-if="rideEstimates != null">
+        <ul>
+            <li ng-repeat="estimate in rideEstimates">{{ estimate }}</li>
+        </ul>
+    </div>
+</div>
