@@ -1,14 +1,16 @@
 <div data-ng-controller="ComparisonController">
-    Enter start lat:
-    <input type="text" data-ng-model="start_lat" />
-    Enter start long:
-    <input type="text" data-ng-model="start_long" />
+    Start lat:<span data-ng-bind="start_lat"></span>
+    Start long:<span data-ng-bind="start_long"></span>
     <br>
-    Enter end lat:
-    <input type="text" data-ng-model="end_lat" />
-    Enter end long:
-    <input type="text" data-ng-model="end_long" />
+    End lat:<span data-ng-bind="end_lat"></span>
+    End long:<span data-ng-bind="end_long"></span>
     <br>
+    Map here:
+    <div id="map"></div>
+    <br>
+    ---------------------
+
+
     <button data-ng-click="getRideEstimates()">Get ride estimates</button>
     <div data-ng-if="rideEstimates != null">
         <ul>
