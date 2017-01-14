@@ -93,3 +93,9 @@ ENV/
 
 # db
 *.sqlite3
+
+# Project files
+node_modules
+ride_comparison_webapp/bower_components
+ride_comparison_webapp/static/
+ride_comparison_webapp/media/

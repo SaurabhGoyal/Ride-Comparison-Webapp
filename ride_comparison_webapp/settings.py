@@ -13,8 +13,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from os.path import abspath, dirname, join, normpath
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+DJANGO_ROOT = dirname(abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'ride_comparison_webapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': (normpath(join(DJANGO_ROOT, u'views')), ),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,4 +120,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC FILE CONFIGURATION #
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+STATIC_ROOT = normpath(join(DJANGO_ROOT, u'static'))
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+STATIC_URL = u'/static/'
+
+# See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = (
+    normpath(join(DJANGO_ROOT, u'assets')),
+    normpath(join(DJANGO_ROOT, u'bower_components')),
+) + TEMPLATES[0][u'DIRS']
+
+# To Serve The Static Pages
+EXPOSE_STATIC_URLS = True
